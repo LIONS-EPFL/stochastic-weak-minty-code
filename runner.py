@@ -121,7 +121,7 @@ def create_problem(args):
         def L(x,y):
             x = x-args.offset
             y = y-args.offset
-            return a * x.transpose().dot(y) + b * jnp.sum(x**2, axis=-1) - b * jnp.sum(y**2, axis=-1)
+            return a * x.transpose().dot(y) + b/2 * jnp.sum(x**2, axis=-1) - b/2 * jnp.sum(y**2, axis=-1)
     elif args.problem == "GlobalForsaken":
         def L(x,y):
             phi = lambda z: 2*z**6/21 - z**4/3 + z**2/3
